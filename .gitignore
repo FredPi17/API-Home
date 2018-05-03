@@ -1,0 +1,6 @@
+file_to_exclude
+
+/apiKeys/db_config_api.php
+/calendar/db_config_calendar.php
+/health/db_config_health.php
+/weather/db_config_weather.php
