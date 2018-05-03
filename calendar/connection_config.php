@@ -5,10 +5,10 @@
  * Date: 02/05/18
  * Time: 22:32
  */
-define("DB_SERVER", "raspberrysqlserver.ddns.net");
-define("DB_BASE", "calendrier");
-define("DB_USER", "fred");
-define("DB_PASSWORD", "password");
+define("DB_SERVER", "");
+define("DB_BASE", "");
+define("DB_USER", "");
+define("DB_PASSWORD", "");
 /**
  *\ $bdd permet la connexion à la base de données de supdecom
  *\ $bdd2 permet la connexion à la base de données de idrac
