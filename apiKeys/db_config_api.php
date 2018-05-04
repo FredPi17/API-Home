@@ -7,16 +7,16 @@
  */
 
 
-define('DB_USER', "fred");
-define('DB_PASSWORD', "password");
-define('DB_DATABASE', "apiKey");
-define('DB_SERVER', 'raspberrysqlserver.ddns.net');
+define('DB_USER', "");
+define('DB_PASSWORD', "");
+define('DB_DATABASE', "");
+define('DB_SERVER', '');
 
 $pdo_options[PDO::ATTR_ERRMODE] = PDO::ERRMODE_EXCEPTION;
 $db = new PDO('mysql:host=' . DB_SERVER . ';dbname=' . DB_DATABASE, DB_USER, DB_PASSWORD, $pdo_options);
 $db->exec("Set character set utf8");
 if($db){
-    echo "<script>console.log('connexion bdd apiKey ok !')</script>";
+    echo "connexion bdd apiKey ok !";
 };
 
 function VerifApi()
