@@ -1,5 +1,3 @@
-
-
 <?php
 /**
  * Created by PhpStorm.
@@ -7,10 +5,11 @@
  * Date: 02/05/2018
  * Time: 09:25
  */
-require_once('connection_config.php');
+require_once('db_config_calendar.php');
+require_once('../apiKeys/db_config_api.php');
 
-
-if(isset($_GET['date'])){
+function GetEventsByDate(){
+    global $bdd;
     $date = $_GET['date'];
 
     $response = array();
@@ -28,7 +27,7 @@ if(isset($_GET['date'])){
             $events['end'] = $resultData["end"];
             $events['idUtilisateur'] = $resultData["idUtilisateur"];
 
-            $response['success'] = 1;
+            $events['success'] = 1;
 
             array_push($response['events'], $events);
         }
@@ -42,7 +41,8 @@ if(isset($_GET['date'])){
     echo json_encode($response);
 }
 
-else if(isset($_GET['year'])){
+function GetEventsByYear(){
+    global $bdd;
     $year = $_GET['year'];
 
     $response = array();
@@ -60,7 +60,7 @@ else if(isset($_GET['year'])){
             $events['end'] = $resultData["end"];
             $events['idUtilisateur'] = $resultData["idUtilisateur"];
 
-            $response['success'] = 1;
+            $events['success'] = 1;
 
             array_push($response['events'], $events);
         }
@@ -74,7 +74,8 @@ else if(isset($_GET['year'])){
     echo json_encode($response);
 }
 
-else if(isset($_GET['monthyear'])){
+function GetEventsByMonthYear(){
+    global $bdd;
     $yearmonth = $_GET['monthyear'];
 
     $response = array();
@@ -92,8 +93,7 @@ else if(isset($_GET['monthyear'])){
             $events['end'] = $resultData["end"];
             $events['idUtilisateur'] = $resultData["idUtilisateur"];
 
-            $response['success'] = 1;
-
+            $events['success'] = 1;
             array_push($response['events'], $events);
         }
     }
@@ -106,7 +106,8 @@ else if(isset($_GET['monthyear'])){
     echo json_encode($response);
 }
 
-else{
+function GetAll(){
+    global $bdd;
     $response = array();
     $response['events'] = array();
 
@@ -122,8 +123,7 @@ else{
             $events['end'] = $resultData["end"];
             $events['idUtilisateur'] = $resultData["idUtilisateur"];
 
-            $response['success'] = 1;
-
+            $events['success'] = 1;
             array_push($response['events'], $events);
         }
     }
@@ -136,6 +136,17 @@ else{
     echo json_encode($response);
 }
 
-
-
-
+if(VerifApi()){
+    if(isset($_GET['date'])){
+        GetEventsByDate();
+    }
+    else if(isset($_GET['year'])){
+        GetEventsByYear();
+    }
+    else if(isset($_GET['monthyear'])){
+        GetEventsByMonthYear();
+    }
+    else{
+        GetAll();
+    }
+}
