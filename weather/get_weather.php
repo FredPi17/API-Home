@@ -8,3 +8,6 @@
 
 include_once ('../apiKeys/db_config_api.php');
 
+
+if(VerifApi()){
+}
