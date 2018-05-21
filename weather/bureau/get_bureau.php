@@ -7,9 +7,9 @@
  */
 
 include_once ('../../apiKeys/db_config_api.php');
+include_once ('../get_weather.php');
 
-
-
+if(VerifApi()){
     if(isset($_GET['date'])){
         $dateStart = $_GET['date']."%2000:00:00";
         $dateEnd = $_GET['date']."%2023:59:59";
@@ -29,7 +29,7 @@ include_once ('../../apiKeys/db_config_api.php');
         GetByYearMonth($url);
     }
     else if(isset($_GET['temperature']) && isset($_GET['results'])){
-        
+
     }
     else if(isset($_GET['humidite']) && isset($_GET['results'])){
 
@@ -40,16 +40,6 @@ include_once ('../../apiKeys/db_config_api.php');
     else{
 
     }
-
-
-function GetByDate($url){
-
 }
 
-function GetByYear($url){
 
-}
-
-function GetByYearMonth($url){
-
-}

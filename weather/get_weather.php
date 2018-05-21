@@ -9,5 +9,26 @@
 include_once ('../apiKeys/db_config_api.php');
 
 
-if(VerifApi()){
+function GetByDate($url){
+    echo $url;
+}
+
+function GetByYear($url){
+    echo $url;
+}
+
+function GetByYearMonth($url){
+    echo $url;
+}
+
+function GetByResults($url){
+    echo $url;
+}
+
+function GetHumidity($url){
+    echo $url;
+}
+
+function GetTemperature($url){
+    echo $url;
 }
