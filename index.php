@@ -54,9 +54,8 @@ include_once ('calendrier.php');
                         Calendrier
                     </a>
                     <ul class="collapse list-unstyled" id="calSubmenu">
-                        <li><a href="#">cal</a></li>
-                        <li><a href="#">Page 2</a></li>
-                        <li><a href="#">Page 3</a></li>
+                        <li><a href="#showEvent" data-toggle="collapse" aria-expanded="true">Voir évènements</a></li>
+                        <li><a href="#addEvent" data-toggle="collapse" aria-expanded="true">Ajouter évènement</a></li>
                     </ul>
                 </li>
 
@@ -79,17 +78,17 @@ include_once ('calendrier.php');
 
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a href="#">About me</a></li>
-                            <li><a href="#">Get API Key</a></li>
+                            <li><a href="about.html">About me</a></li>
+                            <li><a href="get_API.html">Get API Key</a></li>
                             <li><a href="#">FAQ</a></li>
-                            <li><a href="#">Contact</a></li>
+                            <li><a href="contact.php">Contact</a></li>
 
                         </ul>
                     </div>
                 </div>
             </nav>
 
-            <div class=" list-unstyled" id="salon">
+            <div class="list-unstyled" id="salon">
                 <?php echo salon();?>
             </div>
             <div class="collapse list-unstyled" id="exterieur">
@@ -97,6 +96,13 @@ include_once ('calendrier.php');
             </div>
             <div class="collapse list-unstyled" id="bureau">
                 <?php echo bureau();?>
+            </div>
+
+            <div class="collapse list-unstyled" id="showEvent">
+                <?php echo getEvents();?>
+            </div>
+            <div class="collapse list-unstyled" id="addEvent">
+                <?php echo addEvent();?>
             </div>
 
            </div>
