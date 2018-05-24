@@ -7,14 +7,20 @@
 
     <title>API Index</title>
 
-    <!-- Bootstrap CSS CDN -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://fonts.googleapis.com/css?family=Merriweather+Sans:700,300italic,400italic,700italic,300,400' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Russo+One' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <!-- Our Custom CSS -->
-    <link rel="stylesheet" href="sidebar.css">
+
+    <link rel="stylesheet" id="theme-style" href="css/about.css">
+    <link rel="stylesheet" href="css/sidebar.css">
+
 </head>
 <body>
 
-<div class="container-fluid">
     <nav class="navbar navbar-default">
         <div class="container-fluid">
 
