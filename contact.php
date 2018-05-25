@@ -17,6 +17,7 @@
 
     <link rel="stylesheet" id="theme-style" href="css/about.css">
     <link rel="stylesheet" href="css/sidebar.css">
+    <link rel="stylesheet" href="css/contact.css">
 
 </head>
 <body>
@@ -42,6 +43,17 @@
             </div>
         </div>
     </nav>
+    <header class="header-wrapper header-wrapper-contact">
+        <section class="promo section">
+            <div class="container text-center">
+                <h2 class="title">Contact me</h2>
+                <p class="intro">Si vous avez une remarque à faire ou avez une question à me poser, vous êtes au bon endroit !</p>
+            </div>
+        </section>
+    </header>
+
+    </div>
+
     <div class="row">
         <div class='col-sm-10 col-sm-offset-1'>
 
