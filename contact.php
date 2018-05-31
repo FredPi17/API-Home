@@ -35,7 +35,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="about.html">About me</a></li>
-                    <li><a href="get_API.html">Get API Key</a></li>
+                    <li><a href="connexion.php">Connexion</a></li>
                     <li><a href="#">FAQ</a></li>
                     <li><a href="contact.php">Contact</a></li>
 
