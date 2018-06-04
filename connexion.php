@@ -1,10 +1,14 @@
 <?php
 include_once ('login.php');
+session_start();
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
     <title>Connexion</title>
     <link href='https://fonts.googleapis.com/css?family=Merriweather+Sans:700,300italic,400italic,700italic,300,400' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Russo+One' rel='stylesheet' type='text/css'>
@@ -31,14 +35,13 @@ include_once ('login.php');
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="about.html">About me</a></li>
                 <?php
-                if (verifUser()){?>
-                    <li><a href="profil.php">Mon profil</a></li>
-                <?php
+                if(estConnecte()){
+                    echo '<li><a href="profil.php">Mon profil</a></li>';
                 }
-                else
-                    {?>
-                <li><a href="connexion.php">Connexion</a></li>
-                <?php}?>
+                else{
+                    echo '<li><a href="connexion.php">Connexion</a></li>';
+                }
+                ?>
                 <li><a href="#">FAQ</a></li>
                 <li><a href="contact.php">Contact</a></li>
 
@@ -46,7 +49,30 @@ include_once ('login.php');
         </div>
     </div>
 </nav>
-<section id="team" class="team section">
+<?php
+if (isset($_SESSION['id'])){
+    echo '<section id="team" class="team section">
+    <div class="container">
+        <h2 class="title text-center">Connexion</h2>
+        <p class="intro text-center">Vous êtes déjà connecté, que voulez-vous faire ? </p>
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3 text-center">
+                <div class="col-md-6">
+                    <form method="post" action="login.php">
+                        <button class="btn btn-cta-primary" name="logout">Se déconnecter</button>
+                    </form>
+                </div>
+                <div class="col-md-6">
+                    <button class="btn btn-cta-secondary">
+                        <a href="profil.php">Aller au profil</a>
+                     </button>
+                </div>
+            </div>
+        </div>
+    </div>';
+}
+else{
+    echo '<section id="team" class="team section">
     <div class="container">
         <h2 class="title text-center">Connexion</h2>
         <p class="intro text-center">Connectez-vous ou inscrivez-vous si je ne vous connais pas. </p>
@@ -98,7 +124,7 @@ include_once ('login.php');
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-sm-6 col-sm-offset-3">
-                                                <input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="S'enregistrer">
+                                                <input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="S\'enregistrer">
                                             </div>
                                         </div>
                                     </div>
@@ -110,10 +136,15 @@ include_once ('login.php');
             </div>
         </div>
     </div>
+</section>';
+}
+?>
+
 </body>
 <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 
-<script>$(function() {
+<script>
+    $(function() {
 
         $('#login-form-link').click(function(e) {
             $("#login-form").delay(100).fadeIn(100);

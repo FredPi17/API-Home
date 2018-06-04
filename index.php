@@ -2,6 +2,8 @@
 include_once ('weather.php');
 include_once ('sante.php');
 include_once ('calendrier.php');
+include_once ('login.php');
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -67,7 +69,6 @@ include_once ('calendrier.php');
 
         <!-- Page Content Holder -->
         <div id="content">
-
             <nav class="navbar navbar-default">
                 <div class="container-fluid">
 
@@ -80,8 +81,14 @@ include_once ('calendrier.php');
 
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a href="about.html">About me</a></li>
-                            <li><a href="connexion.php">Connexion</a></li>
+                            <li><a href="about.html">About</a></li>
+                            <?php
+                            if(estConnecte()){
+                                echo '<li><a href="profil.php">Mon profil</a></li>';
+                            }
+                            else{
+                                echo '<li><a href="connexion.php">Connexion</a></li>';
+                            }?>
                             <li><a href="#">FAQ</a></li>
                             <li><a href="contact.php">Contact</a></li>
 
