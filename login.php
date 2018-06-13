@@ -9,9 +9,7 @@ session_start();
 $bdd = new PDO('mysql:host=raspberrysqlserver.ddns.net;dbname=apiKey', 'fred', 'password');
 
 if (isset($_GET['login-submit'])){
-    echo $_GET['mail'];
     verifUser();
-
 }
 elseif(isset($_GET['register-submit'])){
     addUser();
@@ -23,7 +21,7 @@ elseif(isset($_POST['logout'])){
 function verifUser()
 {
     global $bdd;
-    $requete = $bdd->prepare('SELECT mail, pass, id, username, userKey, dateAdd, secteur FROM apiList WHERE mail = :mail');
+    $requete = $bdd->prepare('SELECT mail, pass, id, username, userKey, dateAdd, secteur, name FROM apiList WHERE mail = :mail');
     $requete->execute(array(
         'mail' => $_GET['mail']
     ));
@@ -36,6 +34,7 @@ function verifUser()
             $_SESSION['userKey'] = $id['userKey'];
             $_SESSION['dateAdd'] = $id['dateAdd'];
             $_SESSION['secteur'] = $id['secteur'];
+            $_SESSION['name'] = $id['name'];
             header('Location:index.php');
             die();
         }

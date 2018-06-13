@@ -7,6 +7,10 @@
  */
 include_once ('login.php');
 session_start();
+if(!isset($_SESSION['id'])){
+    header('Location:connexion.php');
+    die();
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -28,17 +32,10 @@ session_start();
 <body>
 <nav class="navbar navbar-default">
     <div class="container-fluid">
-
-        <div class="navbar-header">
-            <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
-                <a  href="index.php" class="glyphicon glyphicon-chevron-left"><span>Documentation</span></a>
-
-            </button>
-        </div>
-
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="about.html">About me</a></li>
+                <li><a href="index.php">Accueil</a></li>
+                <li><a href="about.html">About</a></li>
                 <?php
                 if(estConnecte()){
                     echo '<li><a href="profil.php">Mon profil</a></li>';
@@ -63,19 +60,19 @@ session_start();
                 <br />
                 <form method="post" action="profil-update.php">
                 <label>Nom utilisateur</label>
-                <input type="text" class="form-control" placeholder="">
+                <input type="text" class="form-control" placeholder="<?php echo $_SESSION['username'];?>" name="username">
                 <label>Nom</label>
-                <input type="text" class="form-control" placeholder="">
+                <input type="text" class="form-control" placeholder="<?php echo $_SESSION['name'];?>" name="name">
                 <label>Email</label>
-                <input type="email" class="form-control" placeholder="">
+                <input type="email" class="form-control" placeholder="<?php echo $_SESSION['mail'];?>" name="email">
                 <br>
-                <button class="btn btn-cta-primary" type="submit" name="modify">Modifier</button>
+                <button class="btn btn-primary" type="submit" name="modify">Modifier</button>
                 </form>
             </div>
             <div class="col-md-8">
                 <div class="alert alert-info">
-                    <h2>Bio de l'utilisateur: </h2>
-                    <h4>Détail de votre profil</h4>
+                    <h2>Votre bio </h2>
+                    <h4>Détails de votre profil</h4>
                     <p></p>
                 </div>
                 <div class="col-md-6">
@@ -95,17 +92,24 @@ session_start();
                         <h3>Changer votre mot de passe</h3>
                         <br />
                         <label>Entrer l'ancien mot de passe</label>
-                        <input type="password" class="form-control">
+                        <input type="password" class="form-control" name="old-pass">
                         <label>Entrer le nouveau </label>
-                        <input type="password" class="form-control">
+                        <input type="password" class="form-control" name="new-pass">
                         <label>Confirmer le nouveau</label>
-                        <input type="password" class="form-control" />
+                        <input type="password" class="form-control" name="conf-pass">
                         <br>
                         <button class="btn btn-warning" name="change-password">Changer mot de passe</button>
                     </div>
                 </form>
             </div>
         <div class="col-md-12 text-center">
+            <?php if(isset($_GET['success'])){
+                echo '<br/><div class="alert alert-success" role="alert">'.$_GET['success'].'</div>';
+            }
+            elseif(isset($_GET['error'])){
+                echo '<br/><div class="alert alert-danger" role="alert">'.$_GET['error'].'</div>';
+            }
+            ?>
             <form method="post" action="login.php">
                 <button class="btn btn-cta-secondary" name="logout">Se déconnecter</button>
             </form>

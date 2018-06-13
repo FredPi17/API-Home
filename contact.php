@@ -1,5 +1,6 @@
 <?php
 session_start();
+include_once ('login.php');
 ?>
 <!DOCTYPE html>
 <html>
@@ -27,18 +28,18 @@ session_start();
 
     <nav class="navbar navbar-default">
         <div class="container-fluid">
-
-            <div class="navbar-header">
-                <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
-                    <a  href="index.php" class="glyphicon glyphicon-chevron-left"><span>Documentation</span></a>
-
-                </button>
-            </div>
-
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="about.html">About me</a></li>
-                    <li><a href="connexion.php">Connexion</a></li>
+                    <li><a href="index.php">Accueil</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <?php
+                    if(estConnecte()){
+                        echo '<li><a href="profil.php">Mon profil</a></li>';
+                    }
+                    else{
+                        echo '<li><a href="connexion.php">Connexion</a></li>';
+                    }
+                    ?>
                     <li><a href="#">FAQ</a></li>
                     <li><a href="contact.php">Contact</a></li>
 
